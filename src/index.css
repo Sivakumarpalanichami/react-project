@@ -1,0 +1,82 @@
+@import "tailwindcss";
+
+@theme {
+  --font-display: "Fraunces", "Georgia", serif;
+  --font-body: "Work Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, monospace;
+
+  --color-ink: #16241f;
+  --color-paper: #fffdf8;
+  --color-cream: #f6efdd;
+  --color-teal-50: #eaf3f1;
+  --color-teal-100: #cfe4e0;
+  --color-teal-400: #2c7b72;
+  --color-teal-500: #1f5c56;
+  --color-teal-600: #123b37;
+  --color-teal-700: #0c2926;
+  --color-coral-400: #f2795a;
+  --color-coral-500: #e8613c;
+  --color-coral-600: #c94b29;
+  --color-mustard-400: #f0b859;
+  --color-mustard-500: #e8a33d;
+  --color-mustard-600: #c9832a;
+  --color-line: #d8cdb1;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    background-color: var(--color-paper);
+    color: var(--color-ink);
+    font-family: var(--font-body);
+  }
+  h1, h2, h3, h4 {
+    font-family: var(--font-display);
+  }
+  :focus-visible {
+    outline: 2px solid var(--color-coral-500);
+    outline-offset: 3px;
+  }
+}
+
+@layer components {
+  /* Perforated ticket-stub divider used on package/tour cards */
+  .ticket-notch::before,
+  .ticket-notch::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    width: 22px;
+    height: 22px;
+    background: var(--color-paper);
+    border-radius: 9999px;
+    transform: translateX(-50%);
+    z-index: 10;
+  }
+  .ticket-notch::before {
+    top: -11px;
+  }
+  .ticket-notch::after {
+    bottom: -11px;
+  }
+  .ticket-dashed {
+    background-image: repeating-linear-gradient(
+      to bottom,
+      var(--color-line) 0 8px,
+      transparent 8px 16px
+    );
+    background-size: 2px 100%;
+    background-repeat: no-repeat;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
